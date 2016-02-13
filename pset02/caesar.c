@@ -7,16 +7,15 @@
 int main(int argc, string argv[])
 {
     int key = 0;
-    int k = atoi(argv[1]);
     
-    if (argc != 2 || k < 1)
+    if (argc != 2 || atoi(argv[1]) < 1 || argv[1] == NULL)
     {
         printf("Warning: use a non-negative integer.\n");
         return 1;
     }
     else
     {
-        key = k;
+        key = atoi(argv[1]);
     }
     
     string p = GetString();
