@@ -32,6 +32,10 @@ int board[DIM_MAX][DIM_MAX];
 // dimensions
 int d;
 
+// global var for blank 
+int l;
+int h;
+
 // prototypes
 void clear(void);
 void greet(void);
@@ -159,7 +163,22 @@ void greet(void)
  */
 void init(void)
 {
-    // TODO
+    int count = 0;
+    for (int i = 0; i < d; i++)
+    {
+        for (int j = 0; j < d; j++)
+        {
+            count++;
+            board[i][j] = (d * d) - count;
+        }
+    }
+    // swap if odd
+    if (d % 2 == 0)
+    {
+        int temp = board[d - 1][d - 2];
+        board[d - 1][d - 2] = board[d - 1][d - 3];
+        board[d - 1][d - 3] = temp;
+    }
 }
 
 /**
@@ -167,7 +186,26 @@ void init(void)
  */
 void draw(void)
 {
-    // TODO
+    int count = 0;
+    for (int i = 0; i < d; i++)
+    {
+        for (int j = 0; j < d; j++)
+        {
+            count++;
+            if (board[i][j] == 0)
+            {
+                printf("   _");
+            }
+            else
+            {
+                printf("  %2d", board[i][j]);
+                l = i;
+                h = j;
+            }
+        }
+        // new line
+        printf("\n\n");
+    }
 }
 
 /**
@@ -177,6 +215,26 @@ void draw(void)
 bool move(int tile)
 {
     // TODO
+    for (int i = 0; i < d; i++)
+    {
+        for (int j = 0; j < d; j++)
+        {
+            
+            if (tile == board[i][j])
+            {
+                if (((l == (i - 1)) && (j == h)) ||  ((l == (i + 1)) && (j == h)) ||
+                ((i == l) && (h == (j - 1))) || ((i == l) && (h == (j + 1))))
+                {
+                    // swap
+                    board[l][h] = tile;
+                    board[i][j] = 0;
+                    l=i;
+                    h=j;
+                }
+            }
+        }
+    }
+    
     return false;
 }
 

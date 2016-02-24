@@ -17,7 +17,7 @@
  
 bool search(int value, int values[], int n)
 {
-    // TODO: implement a searching algorithm
+    // Binary search
     int start = 0;
     int end = n -1 ;
     
@@ -85,9 +85,9 @@ void sort(int values[], int n)
     // printf("\n");
 }
 
-int main()
-{
-    int sd[8] = {3, 2, 1, 4, 231, 45, 62, 9};
-    sort(sd, 8);
-    printf("%d\n",search(23, sd, 8));
-}
+// int main()
+// {
+//     int sd[8] = {3, 2, 1, 4, 231, 45, 62, 9};
+//     sort(sd, 8);
+//     printf("%d\n",search(23, sd, 8));
+// }
