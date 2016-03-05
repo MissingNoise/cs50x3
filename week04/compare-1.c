@@ -1,21 +1,25 @@
 #include <stdio.h>
 #include <cs50.h>
+#include <string.h>
 
 int main(void)
 {
     printf("Say something: ");
-    string s = GetString();
+    char* s = GetString();
     
     printf("Say something: ");
-    string t = GetString();
+    char* t = GetString();
     
     //comparing pointers. so will be wrong if you type the same thing!
-    if (s == t)
+    if (s != NULL && t != NULL)
     {
-        printf("You typed the same thing.");
-    }
-    else
-    {
-        printf("You typed different things.")
+        if (strcmp(s, t) == 0)
+        {
+            printf("You typed the same thing.\n");
+        }
+        else
+        {
+            printf("You typed different things.\n");
+        }
     }
 }
